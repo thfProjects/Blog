@@ -1,0 +1,26 @@
+body, html {
+    height:100%;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hidescroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+/* Hide scrollbar for IE, Edge and Firefox */
+.hidescroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.mvh-50 {
+  max-height: 50vh;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
+}
