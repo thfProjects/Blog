@@ -1,7 +1,9 @@
 @extends('layouts.content_with_menu')
 
 @section('content_main')
-    @foreach($blogs as $blog)
+    @forelse($blogs as $blog)
         @include('layouts.blog')
-    @endforeach
+    @empty
+        @include('layouts.no_blogs_message')
+    @endforelse
 @endsection

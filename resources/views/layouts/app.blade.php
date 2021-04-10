@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @stack('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,17 +22,13 @@
     <link href="{{ asset('css/additional.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" class="d-flex flex-column justify-content-center vh-100">       
+    <div id="app">       
 
-        <div class="flex-grow-0">
-            @include('layouts.navbar')
-        </div>
+        @include('layouts.navbar')
         
-        <div class="flex-grow-1  overflow-hidden">
-            <main class="py-4 h-100">
-                @yield('content')
-            </main>
-        </div>   
+        <main class="py-4 h-100">
+            @yield('content')
+        </main>   
 
     </div>
 </body>

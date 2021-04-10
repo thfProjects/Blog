@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name', 'CoolBlogs') }}
         </a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

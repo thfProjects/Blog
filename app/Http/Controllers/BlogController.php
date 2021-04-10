@@ -8,19 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $unapproved_only = request('unapproved_only', false);
 
-        $user = Auth::user();
+        $user = $this->getUserOrGuest();
 
         $query = DB::table('blogs')->join('users', 'user_id', '=', 'users.id')->select('blogs.*', 'users.name as author');
 
@@ -36,9 +32,7 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $author = User::findOrFail($blog->user_id)->name;
-        $user = Auth::user();
-
-        //$blog->text = str_replace('', '', $blog->text);
+        $user = $this->getUserOrGuest();
 
         return view('show', ['blog'=>$blog, 'author'=>$author, 'user'=>$user]);    
     }
@@ -50,6 +44,18 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
+        Validator::make(
+            $request->all(),
+            [
+            'title' => ['required', 'max:255'],
+            'image' => ['required', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/gif', 'max:8192'],
+            'text' => ['max:15000']           
+            ],
+            [
+            'image.max' => 'Image size must be less than 8mb'
+            ]
+        )->validate();
+
         $blog = new Blog();
 
         $image = $request->file('image');
@@ -76,9 +82,19 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
-        $blog = Blog::findOrFail($id);
+        Validator::make(
+            $request->all(),
+            [
+            'image' => ['file', 'image', 'mimetypes:image/jpeg,image/png,image/gif', 'max:8192'],
+            'text' => ['max:15000']           
+            ],
+            [
+            'image.max' => 'Image size must be less than 8mb'
+            ]
+        )->validate();
 
-        $blog->title = $request->input('title');
+        $blog = Blog::findOrFail($id);
+        
         $blog->text = $request->input('text');
 
         if($request->hasFile('image'))
@@ -113,5 +129,19 @@ class BlogController extends Controller
         Storage::delete('/public/images/'.$blog->image);
 
         return redirect('/home');
+    }
+
+    private function getUserOrGuest()
+    {
+        if(Auth::check()) $user = Auth::user();
+        else 
+        {
+            $user = new User();
+            $user->id = 0;
+            $user->name = 'guest';
+            $user->admin = false;
+        }
+
+        return $user;
     }
 }

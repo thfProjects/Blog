@@ -20,11 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'BlogController@index')->name('home');
-Route::get('/create', 'BlogController@create');
+Route::get('/create', 'BlogController@create')->middleware('auth');
 Route::post('/home', 'BlogController@store');
 Route::get('/blogs/{id}', 'BlogController@show');
 Route::delete('/blogs/{id}', 'BlogController@destroy');
-Route::get('/edit/{id}', 'BlogController@edit');
+Route::get('/edit/{id}', 'BlogController@edit')->middleware('auth');
 Route::patch('/blogs/{id}', 'BlogController@update');
 Route::patch('/approve/{id}', 'BlogController@approve');
 Route::get('/users', 'UserController@index');
