@@ -15,15 +15,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/home?unapproved_only=true">{{ __('Unapproved posts') }}</a>
             </li>
-            @endif
-        @else
-            <li class="nav-item">
-                <p class="nav-link">{{ __('Login or Register to start posting :)') }}</p>
-            </li> 
-            <div class="card-body d-flex">
-                <a href="/login" class="btn btn-primary button-sidebar mx-1">{{ __('Login') }}</a>             
-                <a href="/register" class="btn btn-primary button-sidebar mx-1">{{ __('Register') }}</a>
-            </div>         
+            @endif   
         @endauth
     </div>
 </div>
