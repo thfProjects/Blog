@@ -12,16 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $unapproved_only = request('unapproved_only', false);
 
-        $user = Auth::user();
+        $user = $this->getUserOrGuest();
 
         $query = DB::table('blogs')->join('users', 'user_id', '=', 'users.id')->select('blogs.*', 'users.name as author');
 
@@ -37,7 +32,7 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         $author = User::findOrFail($blog->user_id)->name;
-        $user = Auth::user();
+        $user = $this->getUserOrGuest();
 
         return view('show', ['blog'=>$blog, 'author'=>$author, 'user'=>$user]);    
     }
@@ -134,5 +129,19 @@ class BlogController extends Controller
         Storage::delete('/public/images/'.$blog->image);
 
         return redirect('/home');
+    }
+
+    private function getUserOrGuest()
+    {
+        if(Auth::check()) $user = Auth::user();
+        else 
+        {
+            $user = new User();
+            $user->id = 0;
+            $user->name = 'guest';
+            $user->admin = false;
+        }
+
+        return $user;
     }
 }
