@@ -10,3 +10,5 @@ Software used:
 [Visual Studio Code](https://code.visualstudio.com/download): Code editor<br/>
 
 Tested with the php development server using "php artisan serve", as well as on Apache
+
+Before running it a MySQL database should be created, and the commands "php artisan migrate", "php artisan db:seed" and "php artisan storage:link" should be run
