@@ -4,6 +4,7 @@ body, html {
 
 body {
   padding-top: 60px;
+  width: 100vw;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -62,4 +63,16 @@ body {
 
 .button-sidebar {
   flex: 1 1 0;
+}
+
+.img-form-preview {
+  width: 100%;
+  height: auto;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.img-file-selected {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }

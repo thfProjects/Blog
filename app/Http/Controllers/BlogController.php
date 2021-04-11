@@ -77,6 +77,8 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
+        if(old('text') != null) $blog->text = old('text');
+
         return view('edit', ['blog'=>$blog]);
     }
 
