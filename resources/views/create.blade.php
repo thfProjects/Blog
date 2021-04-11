@@ -4,9 +4,9 @@
 @push('scripts')
     <script src="{{ asset('js/fileValidation.js') }}"></script>
 @endpush
-<div class="container-fluid w-75">
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <form action="/home" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
