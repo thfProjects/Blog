@@ -1,4 +1,4 @@
-A simple blog type website built with Laravel
+A Blogging website built with Laravel
 
 Software used:
 
