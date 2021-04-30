@@ -1,6 +1,6 @@
 <div class="card my-3">
     <div class="card-body d-flex justify-content-between">
-        <div>
+        <div class="flex-fill min-width-0">
             <h3 class="card-title" href="/blogs/{{ $blog->id }}">{{ $blog->title }}</h3>
             <p class="card-text">{{ __('By ') }}<a class="nav-link px-0 py-0 d-inline" href="/users/{{ $blog->user_id }}">{{ $author }}</a></p>
         </div>

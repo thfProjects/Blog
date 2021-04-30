@@ -1,4 +1,4 @@
-<div class="dropdown">
+<div class="dropdown flex-0-0-auto">
     <a id="options" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <img class="h-100 img-fluid" src="{{ asset('svg\three-dots-vertical.svg') }}">
     </a>

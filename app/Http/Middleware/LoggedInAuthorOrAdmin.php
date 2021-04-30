@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Blog;
 
 class LoggedInAuthorOrAdmin
 {
