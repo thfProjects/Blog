@@ -10,3 +10,6 @@ Software used:
 [Visual Studio Code](https://code.visualstudio.com/download): Code editor<br/>
 
 Tested with the php development server using "php artisan serve", as well as on Apache
+
+<img src="https://i.imgur.com/ZAGp6br.png" width=200/> <img src="https://i.imgur.com/n7iKoq6.png" width=200/> <img src="https://i.imgur.com/c67jraO.png" width=200/> <br/>
+<img src="https://i.imgur.com/IQvZ2W2.png" width=200/> <img src="https://i.imgur.com/LAykJzh.png" width=200/> <img src="https://i.imgur.com/p5YqolL.png" width=200/> <br/>
